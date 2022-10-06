@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "detail")
+@NoArgsConstructor
 @RequiredArgsConstructor
 @Getter
 @EqualsAndHashCode
