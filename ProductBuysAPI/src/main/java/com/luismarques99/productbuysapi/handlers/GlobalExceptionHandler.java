@@ -54,23 +54,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(exception, error, headers, status, request);
     }
 
-//    /**
-//     * Handles all the {@link RuntimeException runtime exceptions} which are not specified in other method handlers
-//     *
-//     * @param exception {@link RuntimeException Runtime Exception}
-//     * @param request   {@link WebRequest Web Request}
-//     * @return response with the exception and the error entity built
-//     */
-//    @ExceptionHandler(RuntimeException.class)
-//    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-//    public ResponseEntity<Object> handleRuntimeException(RuntimeException exception, WebRequest request) {
-//        Error error = new Error(HttpStatus.UNPROCESSABLE_ENTITY.value(), HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase(),
-//                "Runtime error occurred");
-//        error.addField(new Error.Field("message", exception.getMessage()));
-//        log.info("\nHandling runtime error: {}", error.toString());
-//        return handleExceptionInternal(exception, error, new HttpHeaders(), HttpStatus.UNPROCESSABLE_ENTITY, request);
-//    }
-
     /**
      * Handles all the uncaught {@link Exception exceptions}.
      *
