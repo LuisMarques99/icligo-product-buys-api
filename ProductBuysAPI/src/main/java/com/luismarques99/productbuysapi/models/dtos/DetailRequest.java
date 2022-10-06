@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -26,13 +27,13 @@ public abstract class DetailRequest {
     /**
      * Quantity.
      */
-    @NotBlank(message = "Quantity can't be blank")
+    @NotNull
     private Integer quantity;
 
     /**
      * Value.
      */
-    @NotBlank(message = "Value can't be blank")
+    @NotNull
     private Double value;
 
 }
