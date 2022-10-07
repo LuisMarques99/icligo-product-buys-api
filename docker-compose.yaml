@@ -1,0 +1,25 @@
+version: "3.0"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: product-buys-api_db
+    ports:
+      - "8089:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Admin@123
+  
+  product-buys-api:
+    image: luismarques99/product-buys-api:1.0.0
+    container_name: product-buys-api
+    ports:
+      - "8088:8088"
+    environment:
+      - SERVER_ERROR_INCLUDE-STACKTRACE=on_param
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/product_buys_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Admin@123
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8Dialect
+      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRINGDOC_API-DOCS_PATH=/api-docs

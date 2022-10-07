@@ -1,6 +1,5 @@
 package com.luismarques99.productbuysapi.controllers;
 
-import com.luismarques99.productbuysapi.exceptions.DetailNotFoundException;
 import com.luismarques99.productbuysapi.exceptions.MissingDetailException;
 import com.luismarques99.productbuysapi.exceptions.PurchaseNotFoundException;
 import com.luismarques99.productbuysapi.models.Detail;
@@ -38,6 +37,11 @@ public class PurchaseController {
      */
     private final DetailService detailService;
 
+    /**
+     * Returns an ok response with a list of all {@link Purchase purchases}.
+     *
+     * @return list of {@link PurchaseResponse purchase responses}.
+     */
     @GetMapping("")
     public ResponseEntity<List<PurchaseResponse>> getAllPurchases() {
         List<PurchaseResponse> purchasesResponse = this.purchaseService.getAllPurchases().stream()
@@ -46,6 +50,14 @@ public class PurchaseController {
         return ResponseEntity.ok().body(purchasesResponse);
     }
 
+    /**
+     * Returns an ok response with the {@link Purchase purchase} found with the provided id.
+     *
+     * @param id numerical identifier.
+     * @return {@link PurchaseResponse Purchase Response}.
+     * @throws PurchaseNotFoundException if there is no {@link Purchase purchase} with the requested id, an exception
+     *                                   is thrown.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<PurchaseResponse> getPurchaseById(@PathVariable Long id) throws PurchaseNotFoundException {
         Purchase purchase = this.purchaseService.getPurchaseById(id);
@@ -53,6 +65,11 @@ public class PurchaseController {
         return ResponseEntity.ok().body(purchaseResponse);
     }
 
+    /**
+     * Returns an ok response with a list of valid {@link Purchase purchases}.
+     *
+     * @return list of {@link PurchaseResponse purchase responses}.
+     */
     @GetMapping("/valid")
     public ResponseEntity<List<PurchaseResponse>> getValidPurchases() {
         List<PurchaseResponse> purchasesResponse = this.purchaseService.getValidPurchases().stream()
@@ -61,6 +78,12 @@ public class PurchaseController {
         return ResponseEntity.ok().body(purchasesResponse);
     }
 
+    /**
+     * Returns a created response with the URI for the created {@link Purchase purchase} with the requested data.
+     *
+     * @param purchaseCreateRequest {@link PurchaseCreateRequest purchase create request}.
+     * @return created {@link PurchaseResponse purchase response}.
+     */
     @PostMapping("")
     public ResponseEntity<PurchaseResponse> createNewPurchase(@RequestBody @Valid
                                                               PurchaseCreateRequest purchaseCreateRequest) {
@@ -72,6 +95,16 @@ public class PurchaseController {
         return ResponseEntity.created(uri).body(purchaseResponse);
     }
 
+    /**
+     * Returns a no content response after updating a {@link Purchase purchase} identified by its id with the requested
+     * data.
+     *
+     * @param id                    numerical identifier.
+     * @param purchaseUpdateRequest {@link PurchaseUpdateRequest purchase update request}.
+     * @return no content response.
+     * @throws PurchaseNotFoundException if there is no {@link Purchase purchase} with the requested id, an exception
+     *                                   is thrown.
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Void> updatePurchase(@PathVariable Long id,
                                                @RequestBody @Valid PurchaseUpdateRequest purchaseUpdateRequest)
@@ -82,6 +115,14 @@ public class PurchaseController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Returns a no content response after deleting a {@link Purchase purchase} identifier by its id.
+     *
+     * @param id numerical identifier.
+     * @return no content response.
+     * @throws PurchaseNotFoundException if there is no {@link Purchase purchase} with the requested id, an exception
+     *                                   is thrown.
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePurchase(@PathVariable Long id) throws PurchaseNotFoundException {
         Purchase purchase = this.purchaseService.getPurchaseById(id);
@@ -89,6 +130,16 @@ public class PurchaseController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Returns an ok response with a {@link PurchaseResponse purchase response} after adding a {@link Detail detail} to
+     * this purchase.
+     *
+     * @param id                  {@link Purchase purchase} numerical identifier.
+     * @param detailCreateRequest {@link DetailCreateRequest detail request data}.
+     * @return {@link PurchaseResponse purchase response}.
+     * @throws PurchaseNotFoundException if there is no {@link Purchase purchase} with the requested id, an exception
+     *                                   is thrown.
+     */
     @PostMapping("/{id}/add-detail")
     public ResponseEntity<PurchaseResponse> addPurchaseDetail(@PathVariable Long id,
                                                               @RequestBody @Valid DetailCreateRequest detailCreateRequest)
@@ -109,6 +160,17 @@ public class PurchaseController {
         return ResponseEntity.ok().body(purchaseResponse);
     }
 
+    /**
+     * Returns an ok response with a {@link PurchaseResponse purchase response} after removing a {@link Detail detail}
+     * from this purchase.
+     *
+     * @param id                  {@link Purchase purchase} numerical identifier.
+     * @param detailCreateRequest {@link DetailCreateRequest detail request data}.
+     * @return {@link PurchaseResponse purchase response}.
+     * @throws PurchaseNotFoundException if there is no {@link Purchase purchase} with the requested id, an exception
+     *                                   is thrown.
+     * @throws MissingDetailException    if the {@link Detail detail} is non-existent, an exception is thrown.
+     */
     @PostMapping("/{id}/remove-detail")
     public ResponseEntity<PurchaseResponse> removePurchaseDetail(@PathVariable Long id,
                                                                  @RequestBody @Valid DetailCreateRequest detailCreateRequest)
@@ -128,6 +190,12 @@ public class PurchaseController {
         return ResponseEntity.ok().body(purchaseResponse);
     }
 
+    /**
+     * Builds a {@link PurchaseResponse purchase response} with a purchase instance.
+     *
+     * @param purchase {@link Purchase purchase}.
+     * @return {@link PurchaseResponse purchase response}
+     */
     private PurchaseResponse buildPurchaseResponse(Purchase purchase) {
         return new PurchaseResponse(
                 purchase.getId(),
