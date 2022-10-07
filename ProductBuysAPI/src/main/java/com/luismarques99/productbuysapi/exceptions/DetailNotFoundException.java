@@ -14,6 +14,8 @@ public class DetailNotFoundException extends DetailException {
 
     /**
      * Creates a not found {@link Detail detail} exception.
+     *
+     * @param id numerical identifier
      */
     public DetailNotFoundException(Long id) {
         super("Could not find detail with id: " + id);

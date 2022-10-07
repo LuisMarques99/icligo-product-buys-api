@@ -28,10 +28,8 @@ public interface DetailService {
      *
      * @param detailCreateRequest {@link DetailCreateRequest detail creation request}.
      * @return {@link Detail detail}.
-     * @throws DetailAlreadyExistingException if there is already an existing {@link Detail detail} with the same data,
-     *                                        an exception is thrown.
      */
-    Detail createDetail(DetailCreateRequest detailCreateRequest) throws DetailAlreadyExistingException;
+    Detail createDetail(DetailCreateRequest detailCreateRequest);
 
     /**
      * Gets a single {@link Detail detail} by its id.
@@ -73,8 +71,9 @@ public interface DetailService {
      *
      * @param detail              current {@link Detail detail} to be updated.
      * @param detailUpdateRequest {@link DetailUpdateRequest detail update request}.
+     * @return {@link Detail detail}.
      */
-    void updateDetail(Detail detail, DetailUpdateRequest detailUpdateRequest);
+    Detail updateDetail(Detail detail, DetailUpdateRequest detailUpdateRequest);
 
     /**
      * Deletes an existing {@link Detail detail}.
