@@ -1,7 +1,6 @@
 package com.luismarques99.productbuysapi.models;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
