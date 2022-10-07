@@ -1,0 +1,22 @@
+server:
+  port: 8088
+  error:
+#    include-message: always
+#    include-binding-errors: always
+    include-stacktrace: on_param
+#    include-exception: false
+spring:
+  datasource:
+    url: jdbc:mysql://homeserverlm99.servebeer.com:8087/product_buys_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: Admin@123
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+springdoc:
+  api-docs:
+    path: /api-docs

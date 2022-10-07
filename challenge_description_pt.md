@@ -9,6 +9,7 @@ Tu vais implementar a classe que responde aos pedido e que define a assinatura d
 A seguir está o esquema de dados:
 
 > Compra(id:Long, productType:String, expires:DateTime, purchaseDetails:Details)
+>
 > Detalhes(id:Long, description:String, quantity:Integer, value:Double)
 
 A primeira operação devolve detalhes de compras efetuadas a empresa:
