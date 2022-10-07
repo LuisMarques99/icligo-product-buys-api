@@ -13,6 +13,11 @@ import java.util.List;
  */
 public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 
+    /**
+     * Finds the valid purchases.
+     *
+     * @return list of {@link Purchase purchases}.
+     */
     @Query(value = "SELECT * " +
             "FROM purchase " +
             "WHERE expires >= now()",
