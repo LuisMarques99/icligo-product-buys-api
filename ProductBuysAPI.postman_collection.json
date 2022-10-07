@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "50e6be94-33b2-4e02-9d32-5cb5b617b287",
+		"name": "Product Buys API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12418755"
+	},
+	"item": [
+		{
+			"name": "Detail",
+			"item": [
+				{
+					"name": "Get all details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/details",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all details by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/details/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"details",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get details by expression in description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/details?expression=laptop",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"details"
+							],
+							"query": [
+								{
+									"key": "expression",
+									"value": "laptop"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new detail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"\",\n    \"quantity\": 0,\n    \"value\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/v1/details",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update detail",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Laptop MacBook 13 2020 16G 512G\",\n    \"quantity\": 13,\n    \"value\": 1699.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/v1/details/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"details",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete detail",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/details/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"details",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Get all purchases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get valid purchases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases/valid",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases",
+								"valid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get purchase by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productType\": \"Monitor\",\n    \"expires\": \"2022-11-15T18:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update purchase",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productType\": \"Monitor\",\n    \"expires\": \"2022-11-03T18:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete purchase",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add purchase detail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Laptop MacBook Pro 14 2021 16G 512G\",\n    \"quantity\": 8,\n    \"value\": 2399.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases/1/add-detail",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases",
+								"1",
+								"add-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove purchase detail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Laptop MacBook Pro 14 2021 16G 512G\",\n    \"quantity\": 8,\n    \"value\": 2399.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/v1/purchases/2/remove-detail",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"v1",
+								"purchases",
+								"2",
+								"remove-detail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
