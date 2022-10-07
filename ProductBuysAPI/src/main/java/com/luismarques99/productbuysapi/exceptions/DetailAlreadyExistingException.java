@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class DetailAlreadyExistingException extends DetailException {
     /**
      * Creates an already existing {@link Detail detail} exception.
+     *
+     * @param id numerical identifier
      */
     public DetailAlreadyExistingException(Long id) {
         super("Detail already exists with id: " + id);

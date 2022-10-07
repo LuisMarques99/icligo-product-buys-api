@@ -99,10 +99,11 @@ public class DetailController {
     @PostMapping("")
     public ResponseEntity<DetailResponse> createNewDetail(@RequestBody @Valid DetailCreateRequest detailCreateRequest)
             throws DetailAlreadyExistingException {
+        this.detailService.validateUniqueness(detailCreateRequest);
         Detail detail = this.detailService.createDetail(detailCreateRequest);
-        String path = "/api/v1/details" + detail.getId();
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path(path).toUriString());
         this.detailService.saveDetail(detail);
+        String path = "/api/v1/details" + detail.getId(); // FIXME: This path shouldn't be hardcoded!
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path(path).toUriString());
         DetailResponse detailResponse = new DetailResponse(
                 detail.getId(),
                 detail.getDescription(),
@@ -130,7 +131,8 @@ public class DetailController {
             throws DetailNotFoundException, DetailAlreadyExistingException {
         Detail detail = this.detailService.getDetailById(id);
         this.detailService.validateUniqueness(detailUpdateRequest);
-        this.detailService.updateDetail(detail, detailUpdateRequest);
+        detail = this.detailService.updateDetail(detail, detailUpdateRequest);
+        this.detailService.saveDetail(detail);
         return ResponseEntity.noContent().build();
     }
 

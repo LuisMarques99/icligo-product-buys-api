@@ -61,9 +61,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      * @param request   {@link WebRequest Web Request}.
      * @return response with the exception and the error entity built.
      */
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<Object> handleUncaughtException(Exception exception, WebRequest request) {
+    public ResponseEntity<Object> handleUncaughtException(RuntimeException exception, WebRequest request) {
         Error error = new Error(HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
                 "Unknown error occurred.");
         error.addField(new Error.Field("message", exception.getMessage()));

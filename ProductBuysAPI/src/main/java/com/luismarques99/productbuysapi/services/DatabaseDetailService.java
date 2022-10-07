@@ -38,9 +38,8 @@ public class DatabaseDetailService implements DetailService {
     }
 
     @Override
-    public Detail createDetail(DetailCreateRequest detailCreateRequest) throws DetailAlreadyExistingException {
-        // This is a list that can only contain one element.
-        this.validateUniqueness(detailCreateRequest);
+    public Detail createDetail(DetailCreateRequest detailCreateRequest) {
+        log.info("\nCreating new detail: {}", detailCreateRequest.toString());
         return new Detail(detailCreateRequest.getDescription(), detailCreateRequest.getQuantity(),
                 detailCreateRequest.getValue());
     }
@@ -53,7 +52,7 @@ public class DatabaseDetailService implements DetailService {
 
     @Override
     public List<Detail> getDetailsByEqualityRules(String description, Integer quantity, Double value) {
-        log.info("\nFetching details with:\n  >Description: {}\n  >Quantity: {}\n  >Value: {}", description, quantity,
+        log.info("\nFetching details with:\n  > Description: {}\n  > Quantity: {}\n  > Value: {}", description, quantity,
                 value);
         return this.detailRepository.findByEqualityRules(description, quantity, value);
     }
@@ -71,11 +70,12 @@ public class DatabaseDetailService implements DetailService {
     }
 
     @Override
-    public void updateDetail(Detail detail, DetailUpdateRequest detailUpdateRequest) {
-        log.info("\nUpdating detail: {}\n  >New one: {}", detail.toString(), detailUpdateRequest.toString());
+    public Detail updateDetail(Detail detail, DetailUpdateRequest detailUpdateRequest) {
+        log.info("\nUpdating detail: {}\n  > New one: {}", detail.toString(), detailUpdateRequest.toString());
         detail.setDescription(detailUpdateRequest.getDescription());
         detail.setQuantity(detailUpdateRequest.getQuantity());
         detail.setValue(detailUpdateRequest.getValue());
+        return detail;
     }
 
     @Override

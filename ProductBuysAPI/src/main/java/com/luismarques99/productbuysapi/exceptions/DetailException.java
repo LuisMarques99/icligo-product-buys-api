@@ -12,7 +12,7 @@ public abstract class DetailException extends Exception {
     /**
      * Creates a generic {@link Detail detail} exception with a text message.
      *
-     * @param message error message
+     * @param message error message.
      */
     public DetailException(String message) {
         super(message);
