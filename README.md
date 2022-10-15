@@ -16,7 +16,21 @@ Product buys API challenge proposed by iCliGo
 
 ## JavaDoc
 
-[`ProductBuysAPI/apidocs/index.html`](ProductBuysAPI/apidocs/index.html)
+In order to generate the JavaDoc documentation, follow the next steps:
+
+1. Go to the "ProductBuysAPI" directory:
+
+   ```bash
+   cd ProductBuysAPI
+   ```
+
+2. Build assets to target directory:
+
+   ```bash
+   ./mvnw install
+   ```
+
+The JavaDoc documentation should be placed in the target directory and it can be viewd by opeining the file `ProductBuysAPI/target/apidocs/index.html` with a web browser.
 
 ## Local Deployment
 

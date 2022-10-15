@@ -1,8 +1,0 @@
-com.luismarques99.productbuysapi
-com.luismarques99.productbuysapi.controllers
-com.luismarques99.productbuysapi.exceptions
-com.luismarques99.productbuysapi.handlers
-com.luismarques99.productbuysapi.models
-com.luismarques99.productbuysapi.models.dtos
-com.luismarques99.productbuysapi.repositories
-com.luismarques99.productbuysapi.services
